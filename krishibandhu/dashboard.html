@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - KrishiBandhu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                🌱 KrishiBandhu
+            </div>
+
+            <nav>
+                <a href="dashboard.html" class="active">🏠 Dashboard</a>
+                <a href="disease.html">🌿 Crop Health</a>
+                <a href="weather.html">🌦️ Weather</a>
+                <a href="market.html">📈 Market</a>
+                <a href="schemes.html">📋 Schemes</a>
+                <a href="expert.html">👨‍🌾 Ask Expert</a>
+            </nav>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <div class="top-bar">
+
+                <div>
+                    <h1>Welcome, <span id="farmerName">Farmer</span> 👋</h1>
+                    <p>Your agricultural assistant at your fingertips.</p>
+                </div>
+
+                <div class="profile-icon">
+                    👤
+                </div>
+
+            </div>
+
+
+            <!-- Farmer Info -->
+            <div class="farmer-info">
+
+                <div>
+                    <span>📍 Location</span>
+                    <strong id="farmerLocation">--</strong>
+                </div>
+
+                <div>
+                    <span>🌱 Crop</span>
+                    <strong id="farmerCrop">--</strong>
+                </div>
+
+            </div>
+
+
+            <!-- Feature Cards -->
+            <h2 class="section-title">Your Farm Overview</h2>
+
+            <div class="cards">
+
+                <div class="feature-card" onclick="location.href='weather.html'">
+                    <div class="card-icon">🌦️</div>
+                    <h3>Weather Advisory</h3>
+                    <p>Get weather updates and crop-specific advice.</p>
+                    <button>View Weather →</button>
+                </div>
+
+
+                <div class="feature-card" onclick="location.href='disease.html'">
+                    <div class="card-icon">🌿</div>
+                    <h3>Crop Health</h3>
+                    <p>Upload a crop image for AI-powered screening.</p>
+                    <button>Check Crop →</button>
+                </div>
+
+
+                <div class="feature-card" onclick="location.href='market.html'">
+                    <div class="card-icon">📈</div>
+                    <h3>Market Linkage</h3>
+                    <p>Explore indicative prices and potential buyers.</p>
+                    <button>View Market →</button>
+                </div>
+
+
+                <div class="feature-card" onclick="location.href='schemes.html'">
+                    <div class="card-icon">📋</div>
+                    <h3>Government Schemes</h3>
+                    <p>Find schemes and support relevant to farmers.</p>
+                    <button>Explore Schemes →</button>
+                </div>
+
+            </div>
+
+
+            <!-- Important Advisory -->
+            <div class="advisory">
+
+                <div>
+                    <span class="advisory-icon">💡</span>
+                </div>
+
+                <div>
+                    <h3>Today's Farm Advisory</h3>
+                    <p>
+                        Check your local weather conditions before
+                        planning irrigation or field activities.
+                    </p>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script>
+
+        // Display farmer information saved in profile page
+        const name = localStorage.getItem("farmerName");
+        const location = localStorage.getItem("location");
+        const crop = localStorage.getItem("crop");
+
+        if (name) {
+            document.getElementById("farmerName").textContent = name;
+        }
+
+        if (location) {
+            document.getElementById("farmerLocation").textContent = location;
+        }
+
+        if (crop) {
+            document.getElementById("farmerCrop").textContent = crop;
+        }
+
+    </script>
+
+</body>
+</html>

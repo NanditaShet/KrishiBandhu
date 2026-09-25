@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Profile - KrishiBandhu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="welcome-container">
+
+        <div class="logo">👨‍🌾</div>
+
+        <h1>Farmer Profile</h1>
+
+        <p class="tagline">Tell us about your farm</p>
+
+        <div class="login-card">
+
+            <label>Farmer Name</label>
+            <input type="text" id="farmerName" placeholder="Enter your name">
+
+            <label>Location</label>
+            <input type="text" id="location" placeholder="Village / District">
+
+            <label>Select Crop</label>
+            <select id="crop">
+                <option value="">Select your crop</option>
+                <option>Arecanut</option>
+                <option>Paddy</option>
+            </select>
+
+            <label>Farm Size</label>
+            <input type="text" id="farmSize" placeholder="Example: 2 acres">
+
+            <label>Preferred Language</label>
+            <select id="language">
+                <option>English</option>
+                <option>ಕನ್ನಡ</option>
+            </select>
+
+            <button onclick="saveProfile()">Save & Continue</button>
+
+        </div>
+
+    </div>
+
+    <script>
+        function saveProfile() {
+
+            const name = document.getElementById("farmerName").value;
+            const location = document.getElementById("location").value;
+            const crop = document.getElementById("crop").value;
+
+            if (name === "" || location === "" || crop === "") {
+                alert("Please fill in the required details.");
+                return;
+            }
+
+            // Store basic details for the demo
+            localStorage.setItem("farmerName", name);
+            localStorage.setItem("location", location);
+            localStorage.setItem("crop", crop);
+
+            window.location.href = "dashboard.html";
+        }
+    </script>
+
+</body>
+</html>

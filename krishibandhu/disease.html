@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Health - KrishiBandhu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="brand">🌱 KrishiBandhu</div>
+
+        <nav>
+            <a href="dashboard.html">🏠 Dashboard</a>
+            <a href="disease.html" class="active">🌿 Crop Health</a>
+            <a href="weather.html">🌦️ Weather</a>
+            <a href="market.html">📈 Market</a>
+            <a href="schemes.html">📋 Schemes</a>
+            <a href="expert.html">👨‍🌾 Ask Expert</a>
+        </nav>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <div class="top-bar">
+            <div>
+                <h1>🌿 Crop Health</h1>
+                <p>Upload a crop image for preliminary AI screening.</p>
+            </div>
+        </div>
+
+
+        <div class="disease-container">
+
+            <div class="disease-card">
+
+                <h2>Check Your Crop</h2>
+
+                <p>
+                    Upload a clear image of the affected crop or leaf.
+                    Our AI will provide a preliminary assessment.
+                </p>
+
+
+                <label>Select Crop</label>
+
+                <select id="crop">
+                    <option value="">Select crop</option>
+                    <option value="Arecanut">Arecanut</option>
+                    <option value="Paddy">Paddy</option>
+                </select>
+
+
+                <label>Upload Crop Image</label>
+
+                <div class="upload-box">
+
+                    <input
+                        type="file"
+                        id="cropImage"
+                        accept="image/*"
+                        onchange="previewImage(event)"
+                    >
+
+                    <div id="preview">
+                        📷
+                        <p>Click to upload crop image</p>
+                    </div>
+
+                </div>
+
+
+                <button onclick="analyzeCrop()">
+                    🔍 Analyze Crop
+                </button>
+
+            </div>
+
+
+            <!-- Information Card -->
+
+            <div class="info-card">
+
+                <h3>💡 For better results</h3>
+
+                <ul>
+                    <li>Take a clear photo of the affected leaf.</li>
+                    <li>Use good lighting.</li>
+                    <li>Keep the crop area clearly visible.</li>
+                    <li>Avoid blurry images.</li>
+                </ul>
+
+                <div class="notice">
+                    ⚠️ AI results are preliminary and should be
+                    verified by an agricultural expert when required.
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+function previewImage(event) {
+
+    const image = event.target.files[0];
+
+    if (image) {
+
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+
+            document.getElementById("preview").innerHTML =
+                `<img src="${e.target.result}" class="image-preview">`;
+
+        };
+
+        reader.readAsDataURL(image);
+    }
+}
+
+
+function analyzeCrop() {
+
+    const crop = document.getElementById("crop").value;
+    const image = document.getElementById("cropImage").files[0];
+
+    if (crop === "") {
+        alert("Please select your crop.");
+        return;
+    }
+
+    if (!image) {
+        alert("Please upload a crop image.");
+        return;
+    }
+
+    /*
+       Temporary demo flow.
+
+       Later, this button will send the image
+       to our Flask backend → AI model → result.
+    */
+
+    localStorage.setItem("selectedCrop", crop);
+
+    window.location.href = "result.html";
+}
+
+</script>
+
+</body>
+</html>

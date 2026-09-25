@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Analysis - KrishiBandhu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="brand">🌱 KrishiBandhu</div>
+
+        <nav>
+            <a href="dashboard.html">🏠 Dashboard</a>
+            <a href="disease.html" class="active">🌿 Crop Health</a>
+            <a href="weather.html">🌦️ Weather</a>
+            <a href="market.html">📈 Market</a>
+            <a href="schemes.html">📋 Schemes</a>
+            <a href="expert.html">👨‍🌾 Ask Expert</a>
+        </nav>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <div class="top-bar">
+
+            <div>
+                <h1>🌿 Crop Analysis</h1>
+                <p>Preliminary AI assessment of your crop.</p>
+            </div>
+
+        </div>
+
+
+        <div class="result-container">
+
+            <!-- Result Card -->
+            <div class="result-card">
+
+                <div class="result-header">
+                    <span class="result-icon">🔍</span>
+
+                    <div>
+                        <h2>AI Analysis Result</h2>
+                        <p id="cropName">Crop: --</p>
+                    </div>
+                </div>
+
+
+                <div class="result-section">
+
+                    <span class="label">Possible Issue</span>
+
+                    <h2 class="issue">
+                        Yellow Leaf Stress
+                    </h2>
+
+                    <p>
+                        The uploaded image shows visual symptoms that
+                        may be associated with yellowing or crop stress.
+                    </p>
+
+                </div>
+
+
+                <!-- Confidence -->
+                <div class="confidence-section">
+
+                    <div class="confidence-top">
+                        <span>AI Confidence</span>
+                        <strong>86%</strong>
+                    </div>
+
+                    <div class="confidence-bar">
+                        <div class="confidence-fill"></div>
+                    </div>
+
+                </div>
+
+
+                <!-- Symptoms -->
+                <div class="result-section">
+
+                    <h3>Observed Symptoms</h3>
+
+                    <ul class="symptoms">
+                        <li>Yellowing of leaf area</li>
+                        <li>Visible change in leaf colour</li>
+                        <li>Possible crop stress</li>
+                    </ul>
+
+                </div>
+
+
+                <!-- Advisory -->
+                <div class="advice-box">
+
+                    <h3>🌱 Recommended Next Step</h3>
+
+                    <p>
+                        Inspect nearby plants for similar symptoms and
+                        monitor soil and weather conditions. If symptoms
+                        continue or spread, consult an agricultural expert.
+                    </p>
+
+                </div>
+
+
+                <!-- Expert -->
+                <div class="expert-box">
+
+                    <div>
+                        <h3>👨‍🌾 Need Expert Verification?</h3>
+
+                        <p>
+                            AI provides a preliminary assessment.
+                            You can send this case to an agricultural expert
+                            for further review.
+                        </p>
+                    </div>
+
+                    <button onclick="askExpert()">
+                        Ask Agricultural Expert →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Right Information -->
+            <div class="side-result-card">
+
+                <h3>📌 Important</h3>
+
+                <p>
+                    This AI result is a preliminary screening and is
+                    not a final agricultural diagnosis.
+                </p>
+
+                <div class="confidence-info">
+
+                    <strong>Confidence</strong>
+
+                    <p>
+                        Higher confidence means the AI found stronger
+                        visual patterns matching the detected issue.
+                    </p>
+
+                </div>
+
+                <button onclick="location.href='disease.html'">
+                    ← Analyze Another Image
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    const crop = localStorage.getItem("selectedCrop");
+
+    if (crop) {
+        document.getElementById("cropName").textContent =
+            "Crop: " + crop;
+    }
+
+
+    function askExpert() {
+
+        localStorage.setItem("expertRequest", "true");
+
+        window.location.href = "expert.html";
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Verification - KrishiBandhu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="brand">🌱 KrishiBandhu</div>
+
+        <nav>
+            <a href="dashboard.html">🏠 Dashboard</a>
+            <a href="disease.html">🌿 Crop Health</a>
+            <a href="weather.html">🌦️ Weather</a>
+            <a href="market.html">📈 Market</a>
+            <a href="schemes.html">📋 Schemes</a>
+            <a href="expert.html" class="active">👨‍🌾 Ask Expert</a>
+        </nav>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <div class="top-bar">
+
+            <div>
+                <h1>👨‍🌾 Agricultural Expert</h1>
+                <p>Get your crop case reviewed by an expert.</p>
+            </div>
+
+        </div>
+
+
+        <div class="expert-container">
+
+            <!-- Request Form -->
+            <div class="expert-card">
+
+                <h2>Send Case for Verification</h2>
+
+                <p class="description">
+                    If the AI result is uncertain or you need additional
+                    guidance, submit your case to an agricultural expert.
+                </p>
+
+
+                <label>Crop</label>
+
+                <select id="expertCrop">
+
+                    <option value="">Select crop</option>
+                    <option>Arecanut</option>
+                    <option>Paddy</option>
+
+                </select>
+
+
+                <label>Your Question</label>
+
+                <textarea
+                    id="expertQuestion"
+                    placeholder="Describe what you observed in your crop..."
+                ></textarea>
+
+
+                <button onclick="submitExpertRequest()">
+                    📤 Send to Agricultural Expert
+                </button>
+
+            </div>
+
+
+            <!-- Status -->
+            <div class="status-card">
+
+                <div class="status-icon">
+                    ⏳
+                </div>
+
+                <h2>Expert Review</h2>
+
+                <p id="statusText">
+                    Your submitted cases will appear here.
+                </p>
+
+                <div class="status-box">
+
+                    <strong>Case Status</strong>
+
+                    <span id="caseStatus">
+                        No request submitted
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+function submitExpertRequest() {
+
+    const crop = document.getElementById("expertCrop").value;
+    const question = document.getElementById("expertQuestion").value;
+
+    if (crop === "" || question === "") {
+
+        alert("Please select your crop and describe your question.");
+
+        return;
+    }
+
+    localStorage.setItem("expertCrop", crop);
+    localStorage.setItem("expertQuestion", question);
+    localStorage.setItem("expertRequest", "true");
+
+    document.getElementById("caseStatus").textContent =
+        "Waiting for Expert Review";
+
+    document.getElementById("statusText").textContent =
+        "Your case has been successfully submitted to an agricultural expert.";
+
+}
+
+</script>
+
+</body>
+
+</html>
